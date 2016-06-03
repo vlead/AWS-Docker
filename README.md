@@ -1,2 +1,2 @@
 # AWS-Docker
-This repository holds all the information after the exploration of AWS-Docker as a project in 2016-Summer-internship program
+This repository holds all the information as and when exploration of AWS-Docker is done. This is part of a project in 2016-Summer-internship program

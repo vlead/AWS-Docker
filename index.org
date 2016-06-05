@@ -1,0 +1,7 @@
+* AWS-Docker
+This repository holds all the information as and when exploration of AWS-Docker
+is done. This is part of a project in 2016-Summer-internship program.
+
+* General weekly plan for Systems Project 
+ Refer for latest [[https://github.com/vlead/AWS-Lambda/blob/master/2016-summer-internship-plans-systems.org][Weekly plan for Systems Project]]
+

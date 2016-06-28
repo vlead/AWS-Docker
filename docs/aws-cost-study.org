@@ -1,4 +1,4 @@
-#+Title: Broken AWS cost for month of May
+#+Title: Billing study for AWS Architecture
 #+Author: Ashay Maheshwari
 #+Date: June 28, 2016 
 

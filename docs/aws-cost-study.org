@@ -3,8 +3,7 @@
 #+Date: June 28, 2016 
 
 * Introduction
-+ This document represents the broken structure of AWS cost for a month. Values obtained are estimated to be correct with error fraction of 
-or - Rs 10,000.
++ This document represents the broken structure of AWS cost for a month. Values obtained are estimated to be correct with error fraction of + or - Rs 10,000.
 + All instances mentioned here are On-Demand instances and are charged on per-hour basis.
 + $1 = Rs70 (Approximated)
 + 1 month = 30 days

@@ -177,7 +177,7 @@ Following graphs gives a visible statistics for values shown in tables.
   + Current Cost of AWS using VM = Rs.99680
   + Approxmiate cost with Docker = Rs.45,954.60
 
-  [[./current-vs-approximate-cost.png][Current vs Approximate Cost]]
+  [[./current-vs-approximate-cost.png]]
    
  
  

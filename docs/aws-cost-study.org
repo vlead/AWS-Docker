@@ -1,10 +1,9 @@
-#+Title: Broken AWS cost for month of May
+#+Title: Billing study for AWS Architecture
 #+Author: Ashay Maheshwari
 #+Date: June 28, 2016 
 
 * Introduction
-+ This document represents the broken structure of AWS cost for a month. Values obtained are estimated to be correct with error fraction of 
-or - Rs 10,000.
++ This document represents the broken structure of AWS cost for a month. Values obtained are estimated to be correct with error fraction of + or - Rs 10,000.
 + All instances mentioned here are On-Demand instances and are charged on per-hour basis.
 + $1 = Rs70 (Approximated)
 + 1 month = 30 days
@@ -83,39 +82,31 @@ or - Rs 10,000.
 |------------------+-----------+--------------+---------|
 
 
-
-
-
-                  
-
-
-
 * Graphs
 Following graphs gives a visible statistics for values shown in tables.
 + Cost share between Storage and EC2 instance ::
   This graphs shows that our major cost is from EC2 instances.
-  [[./storage-vs-instances.png][Storage vs Instance Graph]]
+  [[./storage-vs-instances.png]]
 
 + Number of instances of each type ::
   This graphs gives the number of each type of instances currently running in our AWS architecture. Major amount of those instances
   are t2.micro, which is the cheapest of all.
-  [[./no-of-instances.png][No of instances]]
+  [[./no-of-instances.png]]
 
 + Number of hours of each instance we pay for ::
   #+BEGIN_SRC formula
   Total No. of hours an instance type was up * rate of instance type in $/hour
   #+END_SRC
   + Graph given below share the number of hours an instance type is running for a month.
-  [[./no-of-hours.png][No of hours an instace type runs]]
+  [[./no-of-hours.png]]
   
   + Graph given below share the hour-cost relationship of each instance type 
-  [[./hour-cost-graph.png][hour-cost-graph]]
+  [[./hour-cost-graph.png]]
 
 + Cost spent on each instance type ::
   This graph show the share of cost spent on each instance type.
-  [[./cost-spent-share.png][Cost spent on each instance type]]
+  [[./cost-spent-share.png]]
 
-      
 * Estimated price for Docker
 + We can containerize our VM based AWS architecture using Docker and OpenVz.
 + Assuming that we take 32 GB of AWS machine ::
@@ -138,11 +129,6 @@ Following graphs gives a visible statistics for values shown in tables.
   + Current Cost of AWS using VM = Rs.99680
   + Approxmiate cost with Docker = Rs.45,954.60
 
-  [[./current-vs-approximate-cost.png][Current vs Approximate Cost]]
+  [[./current-vs-approximate-cost.png]]
    
  
- 
-
-
-
-

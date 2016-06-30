@@ -133,26 +133,26 @@ Following table show the pricing for type of Storage and Snapshot data used by V
 Following graphs gives a visible statistics for values shown in tables.
 + Cost share between Storage and EC2 instance ::
   This graphs shows that our major cost is from EC2 instances.
-  [[./storage-vs-instances.png][Storage vs Instance Graph]]
+  [[./storage-vs-instances.png]]
 
 + Number of instances of each type ::
   This graphs gives the number of each type of instances currently running in our AWS architecture. Major amount of those instances
   are t2.micro, which is the cheapest of all.
-  [[./no-of-instances.png][No of instances]]
+  [[./no-of-instances.png]]
 
 + Number of hours of each instance we pay for ::
   #+BEGIN_SRC formula
   Total No. of hours an instance type was up * rate of instance type in $/hour
   #+END_SRC
   + Graph given below share the number of hours an instance type is running for a month.
-  [[./no-of-hours.png][No of hours an instace type runs]]
+  [[./no-of-hours.png]]
   
   + Graph given below share the hour-cost relationship of each instance type 
-  [[./hour-cost-graph.png][hour-cost-graph]]
+  [[./hour-cost-graph.png]]
 
 + Cost spent on each instance type ::
   This graph show the share of cost spent on each instance type.
-  [[./cost-spent-share.png][Cost spent on each instance type]]
+  [[./cost-spent-share.png]]
 
 * Estimated price for Docker
 + We can containerize our VM based AWS architecture using Docker and OpenVz.

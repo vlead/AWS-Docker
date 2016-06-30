@@ -182,7 +182,8 @@ Following graphs gives a visible statistics for values shown in tables.
 
   [[./current-vs-approximate-cost.png]]
 
-   
+* Conclusion
+With Docker already explored, and cost benefits mentioned in the document are exciting, we should try to consider docker for production purposes and shift our current architecture to docker.
  
  
 

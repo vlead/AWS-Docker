@@ -1,4 +1,4 @@
-#+Title: Broken AWS cost for month of May
+#+Title: Analysis of AWS cost for VLEAD hosting Virtual labs 
 #+Author: Ashay Maheshwari
 #+Date: June 28, 2016 
 

@@ -1,0 +1,192 @@
+#+Title: Analysis of AWS cost for Virtual labs hosting 
+#+Author: Ashay Maheshwari
+#+Date: June 28, 2016 
+
+* Introduction
++ This document represents the broken structure of AWS cost for the
+  month of May,2 016. Values obtained are estimated to be correct with
+  error fraction of + or - Rs 10,000.
++ All instances mentioned here are On-Demand instances and are charged on per-hour basis.
++ $1 = Rs70 (Approximated)
++ 1 month = 30 days
+
+* Motivation
+This document is to educate about our billings in AWS. It gives an idea of where are we spending and hence to explore docker to reduce
+the cost by half. With Docker, we can have scalability with constant price. 
+
+* AWS instance cost 
+** AWS Rate chart (Then June 29, 2016)
++ Table given below show the AWS pricing for instance type used by VLEAD.  
++ It represents the cost of an instance type, if up for 24 hours upto 30 days (24 hours * 30).
+
++ Table A.1
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+| Type      | No. of Core | Amount of RAM (in GB) | Rate in ($/hour/per-instance) | Cost for 30 days(in Rs per instance) |
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+| t2.micro  |           1 |                     1 |                         0.013 |                                655.2 |
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+| t2.small  |           1 |                     2 |                         0.026 |                               1310.4 |
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+| t2.medium |           2 |                     4 |                         0.052 |                              2620.80 |
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+| t2.large  |           2 |                     8 |                         0.136 |                               6854.4 |
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+| m3.large  |           2 |                   7.5 |                         0.154 |                               7761.6 |
+|-----------+-------------+-----------------------+-------------------------------+--------------------------------------|
+                   
+** Type and number of instances currently running(For the month of June)
+
++ Table A.2, given below represents the number of instances of specific type, which are currently running in VLEAD AWS architecture.
+
++ Table A.2
+|-----------+------------------|
+| Type      | No. of Instances |
+|-----------+------------------|
+| t2.micro  |               86 |
+|-----------+------------------|
+| t2.small  |               13 |
+|-----------+------------------|
+| t2.medium |                1 |
+|-----------+------------------|
+| t2.large  |                2 |
+|-----------+------------------|
+|           |                  |
+|-----------+------------------|
+| TOTAL     |              102 |
+|-----------+------------------|
+       
+** AWS bill for instances(May, 2016) 
++ AWS pricing for On-Demand instances is on the basis of $X/hour. 
++ As soon as an instance is launched, it is charged for first hour. With the start of minute number 61, we are charged for second hour.
++ Table given below reflects the hour based run time of each type of instance, cost per month in $ and Rs.
++ Say that you launched 5 t2.micro instances and ran them of 5 hours each. Then you will be billed for 25 hours.
+
++ Table A.3
+|------------------+-------------------------------------+----------------------+------------------------|
+| Type of Instance | instance uptime(in hours per month) | Cost (in $per month) | Cost (in Rs per month) |
+|------------------+-------------------------------------+----------------------+------------------------|
+| t2.micro         | 54,746                              |                711.8 | 49,770.00              |
+|------------------+-------------------------------------+----------------------+------------------------|
+| t2.small         | 7,341                               |               191.03 | 13,372.10              |
+|------------------+-------------------------------------+----------------------+------------------------|
+| t2.medium        | 704                                 |                37.33 | 2,613.10               |
+|------------------+-------------------------------------+----------------------+------------------------|
+| t2.large         | 591                                 |                80.38 | 5,626.60               |
+|------------------+-------------------------------------+----------------------+------------------------|
+| m3.large         | 746                                 |               150.12 | 10,508.40              |
+|------------------+-------------------------------------+----------------------+------------------------|
+|                  |                                     |                      |                        |
+|------------------+-------------------------------------+----------------------+------------------------|
+| TOTAL COST       | -                                   |              1170.66 | 81,890.10              |
+|------------------+-------------------------------------+----------------------+------------------------|
+
+
+** Stopped instances
++ We have some stopped instances, for which costs are negligible (generally Storage cost)
+
++ Table A.4
+|------------------+-----------+--------------+---------|
+| No. of Instances | Type      | Region       | Remarks |
+|------------------+-----------+--------------+---------|
+|                1 | m3.large  | N.California | -       |
+|------------------+-----------+--------------+---------|
+|                1 | t2.medium | N.California | -       |
+|------------------+-----------+--------------+---------|
+|                2 | m3.large  | Sao. Paulo   | -       |
+|------------------+-----------+--------------+---------|
+
+* AWS Storage cost 
+** AWS Rate chart for Storage(then June 29, 2016)
+Following table shows the pricing for type of Storage and Snapshot data used by VLEAD.
+
++ Table A.5
+|-----------------+--------------------------|
+| Storage Type    | Rate (in $ per GB-month) |
+|-----------------+--------------------------|
+| SNAPSHOT DATA   |             0.1299999911 |
+|-----------------+--------------------------|
+| SSD DATA        |             0.1899999996 |
+|-----------------+--------------------------|
+| Magnetic Disk   |             0.0499999997 |
+|-----------------+--------------------------|
+
+** AWS bill for Storage (For the month of May 2016)
++ Rate for every Storage type is different as mentioned in Table A.5
++ Charges are applied on the basis of per GB-month
+
++ Table A.6
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+| Region    | Snapshot data (GB used per month) | General Purpse SSD (GB used per month) | Magnetic Disk (GB used per month) | Cost (in $ per month) | Cost (in Rs per month) |
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+| Sao Poulo |                            54.040 |                                417.639 | -                                 |                 86.38 |               6046.600 |
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+| US East   |                            41.429 |                                494.253 | 1,604.189                         |                133.65 |               9355.500 |
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+| US West   |                            42.490 |                                 91.042 | 226.389                           |                    34 |                   2380 |
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+|           |                                   |                                        |                                   |                       |                        |
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+| TOTAL     |                                 - |                                      - | -                                 |                254.03 |              17,782.10 |
+|-----------+-----------------------------------+----------------------------------------+-----------------------------------+-----------------------+------------------------|
+
+* Graphs
+Following graphs gives a visible statistics for values shown in tables.
++ Cost share between Storage and EC2 instance ::
+  This graphs shows that our major cost is from EC2 instances.
+  [[./storage-vs-instances.png]]
+
+
++ Number of instances of each type ::
+  This graphs gives the number of each type of instances currently running in our AWS architecture. Major amount of those instances
+  are t2.micro, which is the cheapest of all.
+  [[./no-of-instances.png]]
+
+
++ Number of hours of each instance we pay for ::
+  #+BEGIN_SRC formula
+  Total No. of hours an instance type was up * rate of instance type in $/hour
+  #+END_SRC
+  + Graph given below share the number of hours an instance type is running for a month.
+  [[./no-of-hours.png]]
+  
+  + Graph given below share the hour-cost relationship of each instance type 
+  [[./hour-cost-graph.png]]
+
++ Cost spent on each instance type ::
+  This graph show the share of cost spent on each instance type.
+  [[./cost-spent-share.png]]
+
+
+* Estimated price for Docker
++ We can containerize our VM based AWS architecture using Docker and OpenVz.
++ Assuming that we take 32 GB of AWS instance ::
+  + Table A.7
+  |---------------+------------------+------------------+------------------------+-------------------------|
+  | Instance type | CORE/RAM (in GB) | Rate (in $/hour) | Cost for 1 day (in Rs) | Cost for 30 days(in Rs) |
+  |---------------+------------------+------------------+------------------------+-------------------------|
+  | m4.2xlarge    | 8/32             | $0.559           |                 939.12 | 28,173.600              |
+  |---------------+------------------+------------------+------------------------+-------------------------|
+  | m4.xlarge     | 4/16             | $0.279           |                 468.72 | 14,061.600              |
+  |---------------+------------------+------------------+------------------------+-------------------------|
+  
++ Expected cost for containerization ::
+  This can be the cost required for VM to run containers and Storage used. Probably Storage cost will remain 
+  stable. For 32 GB VM used, monthly estimated cost -
+  #+BEGIN_SRC cost
+  $ Total Cost = Cost of VM for 30 days + Cost of Storage used
+  $ Total Cost = 28,173.600 + 17,781 = 45,954.60
+  #+END_SRC  
+
+  + Current Cost of AWS using VM = Rs.99680
+  + Approxmiate cost with Docker = Rs.45,954.60
+
+  [[./current-vs-approximate-cost.png]]
+
+* Conclusion
+With Docker already explored, and cost benefits mentioned in the document are exciting, we should try to consider docker for production purposes and shift our current architecture to docker.
+ 
+ 
+
+
+
+
